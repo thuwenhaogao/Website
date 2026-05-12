@@ -293,13 +293,10 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.education-list article {
+.education-list article,
+.experience-list article {
   grid-template-columns: 72px 150px minmax(0, 1fr);
   align-items: center;
-}
-
-.experience-list article {
-  grid-template-columns: 150px minmax(0, 1fr);
 }
 
 .education-list article:first-child,
@@ -569,14 +566,17 @@ address {
     gap: 4px;
   }
 
-  .education-list article {
+  .education-list article,
+  .experience-list article {
     grid-template-columns: 58px minmax(0, 1fr);
     gap: 8px 14px;
     align-items: center;
   }
 
   .education-list time,
-  .education-list article > div {
+  .education-list article > div,
+  .experience-list time,
+  .experience-list article > div {
     grid-column: 2;
   }
 
@@ -587,10 +587,6 @@ address {
     padding: 7px;
   }
 
-  .experience-list article {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
 }
 
 @media (max-width: 520px) {
