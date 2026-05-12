@@ -26,6 +26,11 @@
   }
 
   function buildClustrMapsUrl(config) {
+    if (config.CLUSTRMAPS_SCRIPT) {
+      const params = new URLSearchParams({ d: config.CLUSTRMAPS_ID });
+      return `${config.CLUSTRMAPS_SCRIPT}?${params.toString()}`;
+    }
+
     const options = config.CLUSTRMAPS_OPTIONS || {};
     const params = new URLSearchParams({
       cl: options.color || "dbdbdb",
@@ -57,7 +62,9 @@
 
     const script = document.createElement("script");
     script.type = "text/javascript";
-    script.id = "clustrmaps";
+    script.id = config.CLUSTRMAPS_SCRIPT && config.CLUSTRMAPS_SCRIPT.includes("globe.js")
+      ? "clstr_globe"
+      : "clustrmaps";
     script.async = true;
     script.src = buildClustrMapsUrl(config);
     script.onload = () => {

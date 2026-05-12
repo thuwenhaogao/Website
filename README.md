@@ -19,8 +19,8 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map follows the same ClustrMaps script approach used by the reference academic homepage:
-`//cdn.clustrmaps.com/map_v2.js?cl=dbdbdb&w=300&t=n&d=SITE_ID&co=ffffff&cmo=a7c1a9&cmn=ac9fad`.
+The visitor map uses the ClustrMaps widget generated for this site:
+`//clustrmaps.com/globe.js?d=3sRWfULsHC2PGDTchLeuZ4J8Ljs5NZBTJ_k2mXU0Tpo`.
 
 1. Create a ClustrMaps widget for this website.
 2. Copy the widget's `d` value.
