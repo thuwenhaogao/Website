@@ -409,94 +409,63 @@ h3 {
 .visitor-map-frame {
   position: relative;
   overflow: hidden;
-  min-height: 320px;
-  padding: 20px;
+  min-height: 390px;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
 }
 
 .visitor-map-frame::before {
-  position: absolute;
-  inset: 20px;
-  border: 1px solid #e5e9ec;
+  content: none;
+}
+
+.visitor-map {
+  position: relative;
+  z-index: 1;
+  min-height: 390px;
+  width: 100%;
+}
+
+.visitor-map .leaflet-control-attribution {
+  color: #8a949e;
+  font-size: 0.62rem;
+}
+
+.visitor-map .leaflet-tile-pane {
+  filter: grayscale(1) saturate(0.18) contrast(0.93) brightness(1.03);
+}
+
+.visitor-map .leaflet-tooltip {
+  border: 1px solid var(--line);
   border-radius: 6px;
-  content: "";
+  color: var(--ink);
+  font-size: 0.78rem;
+  box-shadow: 0 8px 24px rgba(34, 38, 42, 0.12);
+}
+
+.visitor-map-status {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
   pointer-events: none;
 }
 
-.clustrmaps-container {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 280px;
-  justify-content: center;
-  align-items: center;
-  place-items: center;
-  text-align: center;
-}
-
-.clustrmaps-container a,
-.clustrmaps-container img,
-.clustrmaps-container canvas,
-.clustrmaps-container iframe {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-
-.clustrmaps-container.is-live {
-  background: #fff;
-}
-
-.fallback-world-map {
-  display: block;
-  width: min(680px, 100%);
-  height: auto;
-  aspect-ratio: 2 / 1;
-}
-
-.fallback-land path {
-  fill: #dcdedf;
-  stroke: #f7f8f8;
-  stroke-width: 2;
-}
-
-.fallback-visitors circle {
-  fill: #a995ad;
-  stroke: #fff;
-  stroke-width: 3;
-  filter: drop-shadow(0 1px 1px rgba(34, 38, 42, 0.18));
-}
-
-.fallback-visitors circle:nth-child(2n) {
-  fill: #9ab4a3;
-}
-
-.map-demo-note {
-  margin: 8px 0 0;
-  color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.45;
-}
-
 .map-status {
-  align-self: end;
   margin: 0;
-  max-width: 420px;
+  max-width: 540px;
   padding: 10px 14px;
   border: 1px solid #e5e9ec;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.5;
-}
-
-.needs-clustrmaps-id .map-status {
-  margin-bottom: 24px;
+  backdrop-filter: blur(8px);
 }
 
 .map-status code {

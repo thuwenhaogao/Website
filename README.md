@@ -19,15 +19,15 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map follows the ClustrMaps script approach used by the reference academic homepage:
-`//cdn.clustrmaps.com/map_v2.js?cl=dbdbdb&w=300&t=n&d=SITE_ID&co=ffffff&cmo=a7c1a9&cmn=ac9fad`.
+The visitor map uses Leaflet on the homepage and an optional Cloudflare Worker backend for approximate visitor locations.
 
-1. Create a ClustrMaps widget for this website.
-2. Copy the widget's `d` value.
-3. Paste it into `assets/js/config.js` as `CLUSTRMAPS_ID`.
+1. Deploy `worker/` to Cloudflare Workers.
+2. Create a KV namespace and bind it as `VISITS_KV`.
+3. Copy `worker/wrangler.toml.example` to `worker/wrangler.toml` and fill in the KV namespace id plus `IP_HASH_SALT`.
+4. Paste the Worker URL into `assets/js/config.js` as `VISITOR_API_BASE_URL`.
 
-The site does not perform custom IP logging. Visitor statistics are handled by ClustrMaps.
-If `CLUSTRMAPS_ID` is empty, the page shows a local SVG world map with clearly labeled demo visitor points.
+The Worker aggregates city/region/country-level locations. Raw IP addresses are used only to compute a daily salted hash for deduplication and are not stored.
+If `VISITOR_API_BASE_URL` is empty, the page shows demo visitor locations around Beijing, Hong Kong, Guangzhou, and Shenzhen.
 
 ## Image Credit
 
