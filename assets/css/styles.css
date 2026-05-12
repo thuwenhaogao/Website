@@ -295,7 +295,7 @@ h3 {
 
 .education-list article,
 .experience-list article {
-  grid-template-columns: 72px 150px minmax(0, 1fr);
+  grid-template-columns: 72px minmax(190px, max-content) minmax(0, 1fr);
   align-items: center;
 }
 
@@ -310,6 +310,7 @@ h3 {
   color: var(--accent-strong);
   font-size: 0.9rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .education-list h3,
@@ -321,6 +322,11 @@ h3 {
 .experience-list p {
   margin: 0;
   color: var(--muted);
+}
+
+.education-list p a,
+.experience-list p a {
+  white-space: nowrap;
 }
 
 .school-logo {
@@ -403,20 +409,17 @@ h3 {
 .visitor-map-frame {
   position: relative;
   overflow: hidden;
-  min-height: 300px;
-  padding: 24px;
+  min-height: 320px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(var(--accent-rgb), 0.12), transparent 28%),
-    radial-gradient(circle at 80% 10%, rgba(var(--accent-alt-rgb), 0.1), transparent 30%),
-    linear-gradient(180deg, #fbfcfc 0%, #f4f8f7 100%);
+  background: #fff;
 }
 
 .visitor-map-frame::before {
   position: absolute;
-  inset: 18px;
-  border: 1px solid rgba(var(--accent-rgb), 0.14);
+  inset: 20px;
+  border: 1px solid #e5e9ec;
   border-radius: 6px;
   content: "";
   pointer-events: none;
@@ -426,75 +429,50 @@ h3 {
   position: relative;
   z-index: 1;
   display: grid;
-  min-height: 250px;
+  min-height: 280px;
   place-items: center;
+  text-align: center;
 }
 
 .clustrmaps-container a,
 .clustrmaps-container img,
 .clustrmaps-container canvas,
 .clustrmaps-container iframe {
-  max-width: 100%;
-}
-
-.map-placeholder {
-  position: absolute;
-  inset: 24px;
-  opacity: 0.62;
-  pointer-events: none;
-}
-
-.map-placeholder span {
-  position: absolute;
   display: block;
-  border: 1px solid rgba(var(--accent-rgb), 0.18);
-  background: rgba(var(--accent-rgb), 0.08);
-  clip-path: polygon(12% 30%, 35% 12%, 71% 20%, 92% 48%, 70% 76%, 30% 70%);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
-.map-placeholder span:nth-child(1) {
-  left: 6%;
-  top: 22%;
-  width: 25%;
-  height: 28%;
+.clustrmaps-container.needs-clustrmaps-id {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 420'%3E%3Cg fill='%23d9dcdf'%3E%3Cpath d='M96 108l56-29 74 14 43 38-48 30-80-9z'/%3E%3Cpath d='M242 181l75-43 79 14 45 45-54 52-82-10z'/%3E%3Cpath d='M489 86l146 11 126 52-127 43-152-10-85-58z'/%3E%3Cpath d='M511 244l68-32 88 16 39 46-65 41-97-10z'/%3E%3Cpath d='M751 255l52-25 78 10 36 34-64 30-76-8z'/%3E%3C/g%3E%3C/svg%3E") center 44% / min(680px, 90%) auto no-repeat;
 }
 
-.map-placeholder span:nth-child(2) {
-  left: 36%;
-  top: 18%;
-  width: 44%;
-  height: 34%;
-}
-
-.map-placeholder span:nth-child(3) {
-  left: 48%;
-  top: 50%;
-  width: 20%;
-  height: 34%;
-}
-
-.map-placeholder span:nth-child(4) {
-  left: 21%;
-  top: 54%;
-  width: 17%;
-  height: 36%;
-}
-
-.map-placeholder span:nth-child(5) {
-  left: 75%;
-  top: 62%;
-  width: 16%;
-  height: 22%;
+.clustrmaps-container.is-live {
+  background: #fff;
 }
 
 .map-status {
+  align-self: end;
   margin: 0;
-  padding: 8px 12px;
-  border: 1px solid rgba(var(--accent-rgb), 0.18);
+  max-width: 420px;
+  padding: 10px 14px;
+  border: 1px solid #e5e9ec;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.needs-clustrmaps-id .map-status {
+  margin-bottom: 24px;
+}
+
+.map-status code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
 }
 
 .visitor-note {

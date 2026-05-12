@@ -41,6 +41,14 @@
     return `https://cdn.clustrmaps.com/map_v2.js?${params.toString()}`;
   }
 
+  function renderClustrMapsSetup(container, status) {
+    container.classList.add("needs-clustrmaps-id");
+    status.hidden = false;
+    status.innerHTML = `
+      <span>ClustrMaps is installed. Add your site <code>d</code> value in <code>assets/js/config.js</code> to activate the live map.</span>
+    `;
+  }
+
   function initClustrMaps() {
     const container = document.getElementById("clustrmaps-container");
     const status = document.getElementById("map-status");
@@ -48,11 +56,11 @@
 
     if (!container || !status) return;
     if (!config.CLUSTRMAPS_ID) {
-      status.hidden = true;
-      container.classList.add("is-static");
+      renderClustrMapsSetup(container, status);
       return;
     }
 
+    container.classList.add("is-live");
     status.hidden = false;
     status.textContent = "Loading visitor map...";
     const script = document.createElement("script");

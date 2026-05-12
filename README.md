@@ -19,14 +19,15 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map follows the ClustrMaps script approach used by the reference academic homepage.
+The visitor map follows the ClustrMaps script approach used by the reference academic homepage:
+`//cdn.clustrmaps.com/map_v2.js?cl=dbdbdb&w=300&t=n&d=SITE_ID&co=ffffff&cmo=a7c1a9&cmn=ac9fad`.
 
 1. Create a ClustrMaps widget for this website.
 2. Copy the widget's `d` value.
 3. Paste it into `assets/js/config.js` as `CLUSTRMAPS_ID`.
 
 The site does not perform custom IP logging. Visitor statistics are handled by ClustrMaps.
-If `CLUSTRMAPS_ID` is empty, the page shows a quiet static map placeholder instead of a configuration warning.
+If `CLUSTRMAPS_ID` is empty, the page shows a neutral setup state without fake visit data.
 
 ## Image Credit
 
