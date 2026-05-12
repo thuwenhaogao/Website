@@ -19,32 +19,13 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The site includes a Cloudflare Worker in `worker/`.
+The visitor map follows the ClustrMaps script approach used by the reference academic homepage.
 
-1. Install and authenticate Wrangler.
-2. Create KV:
+1. Create a ClustrMaps widget for this website.
+2. Copy the widget's `d` value.
+3. Paste it into `assets/js/config.js` as `CLUSTRMAPS_ID`.
 
-```bash
-wrangler kv namespace create VISITS
-```
-
-3. Put the returned KV namespace id in `worker/wrangler.toml`.
-4. Set a private salt:
-
-```bash
-wrangler secret put DEDUPE_SALT
-```
-
-5. Deploy:
-
-```bash
-cd worker
-wrangler deploy
-```
-
-6. Copy the Worker URL into `assets/js/config.js` as `VISIT_API_BASE`.
-
-The Worker aggregates visits by country and region. It uses a daily salted hash for de-duplication and does not store raw IP addresses.
+The site does not perform custom IP logging. Visitor statistics are handled by ClustrMaps.
 
 ## Image Credit
 
