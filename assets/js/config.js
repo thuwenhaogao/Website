@@ -7,7 +7,7 @@ window.SITE_CONFIG = {
     width: 300,
     text: "n",
     background: "ffffff",
-    markerOld: "a7c1a9",
-    markerNew: "0b6f6a"
+    markerOld: "a88bb0",
+    markerNew: "660874"
   }
 };

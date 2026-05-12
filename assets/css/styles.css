@@ -5,9 +5,11 @@
   --muted: #66707a;
   --line: #dfe5e9;
   --soft: #f6f8f9;
-  --accent: #0b6f6a;
-  --accent-strong: #084f4b;
-  --link: #175ea8;
+  --accent: #660874;
+  --accent-strong: #4b0056;
+  --accent-rgb: 102, 8, 116;
+  --accent-alt-rgb: 130, 49, 142;
+  --link: #660874;
   --max: 1060px;
 }
 
@@ -294,6 +296,14 @@ h3 {
   color: var(--muted);
 }
 
+.experience-block {
+  margin-top: 28px;
+}
+
+.experience-block > h3 {
+  margin-bottom: 14px;
+}
+
 .section-heading {
   max-width: 760px;
   margin-bottom: 24px;
@@ -352,15 +362,15 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
-    radial-gradient(circle at 20% 20%, rgba(11, 111, 106, 0.11), transparent 28%),
-    radial-gradient(circle at 80% 10%, rgba(23, 94, 168, 0.1), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(var(--accent-rgb), 0.12), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(var(--accent-alt-rgb), 0.1), transparent 30%),
     linear-gradient(180deg, #fbfcfc 0%, #f4f8f7 100%);
 }
 
 .visitor-map-frame::before {
   position: absolute;
   inset: 18px;
-  border: 1px solid rgba(11, 111, 106, 0.12);
+  border: 1px solid rgba(var(--accent-rgb), 0.14);
   border-radius: 6px;
   content: "";
   pointer-events: none;
@@ -391,8 +401,8 @@ h3 {
 .map-placeholder span {
   position: absolute;
   display: block;
-  border: 1px solid rgba(11, 111, 106, 0.18);
-  background: rgba(11, 111, 106, 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
+  background: rgba(var(--accent-rgb), 0.08);
   clip-path: polygon(12% 30%, 35% 12%, 71% 20%, 92% 48%, 70% 76%, 30% 70%);
 }
 
@@ -434,7 +444,7 @@ h3 {
 .map-status {
   margin: 0;
   padding: 8px 12px;
-  border: 1px solid rgba(11, 111, 106, 0.18);
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.82);
   color: var(--muted);
