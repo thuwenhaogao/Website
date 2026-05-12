@@ -48,10 +48,12 @@
 
     if (!container || !status) return;
     if (!config.CLUSTRMAPS_ID) {
-      status.textContent = "ClustrMaps will load after your site ID is configured in assets/js/config.js.";
+      status.hidden = true;
+      container.classList.add("is-static");
       return;
     }
 
+    status.hidden = false;
     status.textContent = "Loading visitor map...";
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -73,4 +75,3 @@
     initClustrMaps();
   });
 }());
-

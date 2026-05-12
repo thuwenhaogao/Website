@@ -26,6 +26,7 @@ The visitor map follows the ClustrMaps script approach used by the reference aca
 3. Paste it into `assets/js/config.js` as `CLUSTRMAPS_ID`.
 
 The site does not perform custom IP logging. Visitor statistics are handled by ClustrMaps.
+If `CLUSTRMAPS_ID` is empty, the page shows a quiet static map placeholder instead of a configuration warning.
 
 ## Image Credit
 
