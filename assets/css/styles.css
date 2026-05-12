@@ -121,6 +121,11 @@ main {
   text-transform: uppercase;
 }
 
+.intro .eyebrow {
+  font-size: clamp(0.96rem, 1.8vw, 1.12rem);
+  letter-spacing: 0.1em;
+}
+
 h1,
 h2,
 h3 {
@@ -131,6 +136,13 @@ h3 {
 h1 {
   font-size: 3.1rem;
   font-weight: 760;
+}
+
+.native-name {
+  color: var(--accent-strong);
+  font-size: 0.52em;
+  font-weight: 680;
+  white-space: nowrap;
 }
 
 h2 {
@@ -214,7 +226,11 @@ h3 {
 
 .campus-section .campus-figure {
   max-width: 760px;
-  margin-left: auto;
+  margin: 0 auto;
+}
+
+.campus-section .campus-figure figcaption {
+  text-align: center;
 }
 
 .two-column {
@@ -263,37 +279,70 @@ h3 {
   color: var(--muted);
 }
 
-.education-list {
+.education-list,
+.experience-list {
   display: grid;
   gap: 14px;
 }
 
-.education-list article {
+.education-list article,
+.experience-list article {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
   gap: 18px;
   padding: 16px 0;
   border-top: 1px solid var(--line);
 }
 
-.education-list article:first-child {
+.education-list article {
+  grid-template-columns: 72px 150px minmax(0, 1fr);
+  align-items: center;
+}
+
+.experience-list article {
+  grid-template-columns: 150px minmax(0, 1fr);
+}
+
+.education-list article:first-child,
+.experience-list article:first-child {
   border-top: 0;
   padding-top: 0;
 }
 
-.education-list time {
+.education-list time,
+.experience-list time {
   color: var(--accent-strong);
   font-size: 0.9rem;
   font-weight: 700;
 }
 
-.education-list h3 {
+.education-list h3,
+.experience-list h3 {
   margin-bottom: 4px;
 }
 
-.education-list p {
+.education-list p,
+.experience-list p {
   margin: 0;
   color: var(--muted);
+}
+
+.school-logo {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.school-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .experience-block {
@@ -512,6 +561,7 @@ address {
 
   .campus-section .campus-figure {
     max-width: none;
+    margin: 0 auto;
   }
 
   .timeline article {
@@ -520,6 +570,24 @@ address {
   }
 
   .education-list article {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 8px 14px;
+    align-items: center;
+  }
+
+  .education-list time,
+  .education-list article > div {
+    grid-column: 2;
+  }
+
+  .school-logo {
+    grid-row: 1 / span 2;
+    width: 54px;
+    height: 54px;
+    padding: 7px;
+  }
+
+  .experience-list article {
     grid-template-columns: 1fr;
     gap: 6px;
   }
