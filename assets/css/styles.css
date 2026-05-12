@@ -156,7 +156,7 @@ h3 {
 
 .lead {
   max-width: 680px;
-  margin: 22px 0 0;
+  margin: 12px 0 0;
   color: #343a40;
   font-size: 1.12rem;
 }
@@ -430,7 +430,7 @@ h3 {
 
 .visits-section {
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 14px;
 }
 
 .visits-section > div:first-child {
@@ -445,7 +445,7 @@ h3 {
   align-items: center;
   justify-content: center;
   width: min(100%, 760px);
-  height: clamp(330px, 42vw, 720px);
+  height: clamp(270px, 32vw, 560px);
   min-height: 0;
   margin: 0 auto;
   padding: 0;
@@ -513,7 +513,7 @@ h3 {
 
 .visitor-note {
   width: min(100%, 760px);
-  margin: 8px auto 0;
+  margin: 4px auto 0;
   color: var(--muted);
   font-size: 0.9rem;
   text-align: center;
@@ -638,7 +638,7 @@ address {
 
   .visitor-map-frame,
   .clustrmaps-container {
-    height: 340px;
+    height: 270px;
     min-height: 0;
   }
 
