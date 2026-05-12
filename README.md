@@ -12,10 +12,10 @@ Open `http://localhost:8000`.
 
 ## Deploy to GitHub Pages
 
-1. Create `thuwenhaogao/academic-homepage-v2`.
+1. Create or use `thuwenhaogao/Website-V2`.
 2. Push this repository to GitHub.
 3. In GitHub repository settings, enable Pages from the `main` branch root.
-4. The site should be available at `https://thuwenhaogao.github.io/academic-homepage-v2/`.
+4. The site should be available at `https://thuwenhaogao.github.io/Website-V2/`.
 
 ## Visitor Map
 
@@ -49,4 +49,3 @@ The Worker aggregates visits by country and region. It uses a daily salted hash 
 ## Image Credit
 
 Tsinghua University Second Gate image: Wikimedia Commons, CC0.
-

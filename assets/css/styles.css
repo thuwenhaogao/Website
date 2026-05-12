@@ -95,11 +95,18 @@ main {
 }
 
 .intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-  align-items: center;
-  gap: 46px;
   padding-top: 72px;
+}
+
+.intro-copy {
+  max-width: 860px;
+}
+
+.identity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
 }
 
 .eyebrow,
@@ -163,6 +170,22 @@ h3 {
   text-decoration: none;
 }
 
+.profile-photo {
+  flex: 0 0 clamp(132px, 18vw, 190px);
+  margin: 0;
+}
+
+.profile-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 7;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
 .campus-figure {
   margin: 0;
 }
@@ -181,6 +204,15 @@ h3 {
   margin-top: 8px;
   color: var(--muted);
   font-size: 0.84rem;
+}
+
+.campus-section {
+  padding-top: 40px;
+}
+
+.campus-section .campus-figure {
+  max-width: 760px;
+  margin-left: auto;
 }
 
 .two-column {
@@ -371,7 +403,6 @@ address {
     justify-content: flex-start;
   }
 
-  .intro,
   .two-column {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -383,6 +414,15 @@ address {
 
   h1 {
     font-size: 2.3rem;
+  }
+
+  .identity-row {
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .campus-section .campus-figure {
+    max-width: none;
   }
 
   .timeline article {
@@ -410,5 +450,14 @@ address {
   .publication-list li {
     padding: 14px;
   }
-}
 
+  .identity-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .profile-photo {
+    flex-basis: auto;
+    width: 112px;
+  }
+}

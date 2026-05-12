@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Wenhao Gao, Ph.D. student in Electrical Engineering at Tsinghua University. Research in power systems, optimization, offshore wind, and electric vehicles.">
     <title>Wenhao Gao | Academic Homepage</title>
-    <link rel="preload" href="assets/img/tsinghua-second-gate.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/img/wenhao-gao-portrait.webp" as="image" type="image/webp">
     <link rel="stylesheet" href="assets/css/styles.css">
   </head>
   <body>
@@ -25,8 +25,18 @@
     <main id="home">
       <section class="intro section">
         <div class="intro-copy">
-          <p class="eyebrow">Ph.D. Student · Tsinghua University</p>
-          <h1>Wenhao Gao</h1>
+          <div class="identity-row">
+            <div>
+              <p class="eyebrow">Ph.D. Student · Tsinghua University</p>
+              <h1>Wenhao Gao</h1>
+            </div>
+            <figure class="profile-photo">
+              <picture>
+                <source srcset="assets/img/wenhao-gao-portrait.webp" type="image/webp">
+                <img src="assets/img/wenhao-gao-portrait.jpg" alt="Portrait of Wenhao Gao" width="480" height="672">
+              </picture>
+            </figure>
+          </div>
           <p class="lead">
             I work on optimization for modern power systems, with current interests in offshore wind power systems,
             distribution network planning, and transportation electrification.
@@ -37,13 +47,6 @@
             <a href="mailto:gaowh24@mails.tsinghua.edu.cn">Email</a>
           </div>
         </div>
-        <figure class="campus-figure">
-          <picture>
-            <source srcset="assets/img/tsinghua-second-gate.webp" type="image/webp">
-            <img src="assets/img/tsinghua-second-gate.jpg" alt="Tsinghua University Second Gate" width="1400" height="936">
-          </picture>
-          <figcaption>Tsinghua University Second Gate</figcaption>
-        </figure>
       </section>
 
       <section id="research" class="section two-column">
@@ -147,6 +150,16 @@
           Tsinghua University, Shenzhen, China
         </address>
       </section>
+
+      <section class="section campus-section" aria-label="Tsinghua University campus">
+        <figure class="campus-figure">
+          <picture>
+            <source srcset="assets/img/tsinghua-second-gate.webp" type="image/webp">
+            <img src="assets/img/tsinghua-second-gate.jpg" alt="Tsinghua University Second Gate" width="1400" height="936" loading="lazy">
+          </picture>
+          <figcaption>Tsinghua University Second Gate</figcaption>
+        </figure>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -161,4 +174,3 @@
     <script src="assets/js/site.js"></script>
   </body>
 </html>
-
