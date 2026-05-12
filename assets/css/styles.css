@@ -1,0 +1,414 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --ink: #22262a;
+  --muted: #66707a;
+  --line: #dfe5e9;
+  --soft: #f6f8f9;
+  --accent: #0b6f6a;
+  --accent-strong: #084f4b;
+  --link: #175ea8;
+  --max: 1060px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  display: inline-grid;
+  color: var(--ink);
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand-name {
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-role {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 18px;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: var(--ink);
+}
+
+main {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  align-items: center;
+  gap: 46px;
+  padding-top: 72px;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 10px;
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.18;
+}
+
+h1 {
+  font-size: 3.1rem;
+  font-weight: 760;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+}
+
+.lead {
+  max-width: 680px;
+  margin: 22px 0 0;
+  color: #343a40;
+  font-size: 1.12rem;
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.link-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.link-row a:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.campus-figure {
+  margin: 0;
+}
+
+.campus-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.campus-figure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 48px;
+}
+
+.prose p,
+.section-heading p,
+.muted {
+  color: var(--muted);
+}
+
+.clean-list {
+  margin: 20px 0 0;
+  padding-left: 20px;
+}
+
+.clean-list li + li {
+  margin-top: 8px;
+}
+
+.timeline {
+  display: grid;
+  gap: 18px;
+}
+
+.timeline article {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.timeline time {
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.timeline p {
+  margin: 0;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.publication-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.publication-list li {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.publication-title {
+  display: block;
+  font-weight: 700;
+}
+
+.publication-meta {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.publication-venue {
+  display: block;
+  margin-top: 2px;
+}
+
+.patent-block {
+  margin-top: 28px;
+  padding: 18px;
+  border-left: 3px solid var(--accent);
+  background: var(--soft);
+}
+
+.patent-block p {
+  margin: 8px 0 0;
+}
+
+.visit-panel {
+  min-width: 0;
+}
+
+.world-map {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfc;
+}
+
+.map-land path {
+  fill: #e5ecec;
+  stroke: #c8d5d4;
+  stroke-width: 1.4;
+}
+
+.visitor-dot {
+  fill: var(--accent);
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.visitor-label {
+  fill: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: #ffffff;
+  stroke-width: 4;
+}
+
+.map-status {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.visit-table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+}
+
+.visit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.visit-table th,
+.visit-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.visit-table th {
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+address {
+  font-style: normal;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 26px 24px 36px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+  .site-header {
+    position: static;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+
+  .intro,
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .intro {
+    padding-top: 48px;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+  }
+
+  .timeline article {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 520px) {
+  main,
+  .site-header,
+  .site-footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .section {
+    padding: 42px 0;
+  }
+
+  .publication-list {
+    padding-left: 20px;
+  }
+
+  .publication-list li {
+    padding: 14px;
+  }
+}
+

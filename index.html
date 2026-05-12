@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Wenhao Gao, Ph.D. student in Electrical Engineering at Tsinghua University. Research in power systems, optimization, offshore wind, and electric vehicles.">
+    <title>Wenhao Gao | Academic Homepage</title>
+    <link rel="preload" href="assets/img/tsinghua-second-gate.webp" as="image" type="image/webp">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Wenhao Gao home">
+        <span class="brand-name">Wenhao Gao</span>
+        <span class="brand-role">Electrical Engineering</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#visits">Visits</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="intro section">
+        <div class="intro-copy">
+          <p class="eyebrow">Ph.D. Student · Tsinghua University</p>
+          <h1>Wenhao Gao</h1>
+          <p class="lead">
+            I work on optimization for modern power systems, with current interests in offshore wind power systems,
+            distribution network planning, and transportation electrification.
+          </p>
+          <div class="link-row" aria-label="Profile links">
+            <a href="https://scholar.google.com/citations?user=XINPj14AAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+            <a href="https://thuwenhaogao.github.io/static/YonghengWang_CV.pdf" target="_blank" rel="noreferrer">CV</a>
+            <a href="mailto:gaowh24@mails.tsinghua.edu.cn">Email</a>
+          </div>
+        </div>
+        <figure class="campus-figure">
+          <picture>
+            <source srcset="assets/img/tsinghua-second-gate.webp" type="image/webp">
+            <img src="assets/img/tsinghua-second-gate.jpg" alt="Tsinghua University Second Gate" width="1400" height="936">
+          </picture>
+          <figcaption>Tsinghua University Second Gate</figcaption>
+        </figure>
+      </section>
+
+      <section id="research" class="section two-column">
+        <div>
+          <p class="section-kicker">Research</p>
+          <h2>Interests</h2>
+        </div>
+        <div class="prose">
+          <p>
+            My research focuses on optimization and decision-making for power and energy systems, especially under
+            spatial, operational, and reliability constraints.
+          </p>
+          <ul class="clean-list">
+            <li>Power system planning and operation</li>
+            <li>Offshore wind farm collector and transmission systems</li>
+            <li>Distribution networks with charging infrastructure</li>
+            <li>Electric vehicle charging and transportation-energy coupling</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section two-column">
+        <div>
+          <p class="section-kicker">Updates</p>
+          <h2>Recent News</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <time datetime="2024-09-01">Sep 2024</time>
+            <p>Began my Ph.D. journey in Electrical Engineering at Tsinghua University.</p>
+          </article>
+          <article>
+            <time datetime="2023-06-30">Jun 2023</time>
+            <p>Graduated from the National University of Singapore with an outstanding master's thesis.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="publications" class="section">
+        <div class="section-heading">
+          <p class="section-kicker">Scholarship</p>
+          <h2>Publications</h2>
+          <p>Publications are listed in English. Chinese-language papers are marked with <span class="nowrap">(in Chinese)</span>.</p>
+        </div>
+        <ol class="publication-list" id="publication-list"></ol>
+
+        <div class="patent-block">
+          <h3>Patent</h3>
+          <p>
+            A Novel Trench MOS TMBS Contact SBR. China Patent CN111668314A, Sep. 2020.
+          </p>
+        </div>
+      </section>
+
+      <section id="visits" class="section two-column visits-section">
+        <div>
+          <p class="section-kicker">Visitors</p>
+          <h2>World Map</h2>
+          <p class="muted">
+            Aggregated by country and region. Raw IP addresses are not stored.
+          </p>
+        </div>
+        <div class="visit-panel">
+          <svg class="world-map" viewBox="0 0 960 480" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">World visitor map</title>
+            <desc id="map-desc">A world map showing aggregated visits by country when the visitor API is configured.</desc>
+            <g class="map-land" aria-hidden="true">
+              <path d="M75 151 129 117 219 93 287 130 310 188 265 236 184 229 120 207 86 183Z"></path>
+              <path d="M236 238 305 278 327 347 294 431 239 381 214 303Z"></path>
+              <path d="M299 62 371 43 425 72 391 111 319 105Z"></path>
+              <path d="M390 129 505 88 648 84 780 126 880 190 822 238 729 230 657 199 589 234 497 223 427 189Z"></path>
+              <path d="M499 223 600 240 657 323 615 416 538 384 486 300Z"></path>
+              <path d="M722 326 825 342 872 389 792 426 718 393Z"></path>
+            </g>
+            <g id="visitor-points" class="visitor-points"></g>
+          </svg>
+          <p id="map-status" class="map-status">Visitor map is waiting for the Cloudflare Worker endpoint.</p>
+          <div class="visit-table-wrap" id="visit-table-wrap" hidden>
+            <table class="visit-table">
+              <thead>
+                <tr>
+                  <th scope="col">Country</th>
+                  <th scope="col">Visits</th>
+                  <th scope="col">Top regions</th>
+                </tr>
+              </thead>
+              <tbody id="visit-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section two-column contact-section">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2>Get in Touch</h2>
+        </div>
+        <address>
+          <a href="mailto:gaowh24@mails.tsinghua.edu.cn">gaowh24@mails.tsinghua.edu.cn</a><br>
+          Tsinghua Shenzhen International Graduate School<br>
+          Tsinghua University, Shenzhen, China
+        </address>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Wenhao Gao.</p>
+      <p>
+        Image: <a href="https://commons.wikimedia.org/wiki/File:2019%E5%B9%B4%E6%B8%85%E8%8F%AF%E4%BA%8C%E6%A0%A1%E9%96%80.jpg" target="_blank" rel="noreferrer">Tsinghua Second Gate</a>, CC0.
+      </p>
+    </footer>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/publications.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
+
