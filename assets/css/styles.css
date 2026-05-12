@@ -428,8 +428,11 @@ h3 {
 .clustrmaps-container {
   position: relative;
   z-index: 1;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   min-height: 280px;
+  justify-content: center;
+  align-items: center;
   place-items: center;
   text-align: center;
 }
@@ -444,13 +447,39 @@ h3 {
   margin: 0 auto;
 }
 
-.clustrmaps-container.needs-clustrmaps-id {
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 420'%3E%3Cg fill='%23d9dcdf'%3E%3Cpath d='M96 108l56-29 74 14 43 38-48 30-80-9z'/%3E%3Cpath d='M242 181l75-43 79 14 45 45-54 52-82-10z'/%3E%3Cpath d='M489 86l146 11 126 52-127 43-152-10-85-58z'/%3E%3Cpath d='M511 244l68-32 88 16 39 46-65 41-97-10z'/%3E%3Cpath d='M751 255l52-25 78 10 36 34-64 30-76-8z'/%3E%3C/g%3E%3C/svg%3E") center 44% / min(680px, 90%) auto no-repeat;
-}
-
 .clustrmaps-container.is-live {
   background: #fff;
+}
+
+.fallback-world-map {
+  display: block;
+  width: min(680px, 100%);
+  height: auto;
+  aspect-ratio: 2 / 1;
+}
+
+.fallback-land path {
+  fill: #dcdedf;
+  stroke: #f7f8f8;
+  stroke-width: 2;
+}
+
+.fallback-visitors circle {
+  fill: #a995ad;
+  stroke: #fff;
+  stroke-width: 3;
+  filter: drop-shadow(0 1px 1px rgba(34, 38, 42, 0.18));
+}
+
+.fallback-visitors circle:nth-child(2n) {
+  fill: #9ab4a3;
+}
+
+.map-demo-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
 }
 
 .map-status {

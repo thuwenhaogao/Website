@@ -27,7 +27,7 @@ The visitor map follows the ClustrMaps script approach used by the reference aca
 3. Paste it into `assets/js/config.js` as `CLUSTRMAPS_ID`.
 
 The site does not perform custom IP logging. Visitor statistics are handled by ClustrMaps.
-If `CLUSTRMAPS_ID` is empty, the page shows a neutral setup state without fake visit data.
+If `CLUSTRMAPS_ID` is empty, the page shows a local SVG world map with clearly labeled demo visitor points.
 
 ## Image Credit
 
