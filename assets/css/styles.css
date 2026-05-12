@@ -56,7 +56,7 @@ a:hover {
 
 .brand {
   display: inline-grid;
-  color: var(--ink);
+  color: var(--accent-strong);
 }
 
 .brand:hover {
@@ -69,7 +69,7 @@ a:hover {
 }
 
 .brand-role {
-  color: var(--muted);
+  color: var(--accent);
   font-size: 0.86rem;
 }
 
@@ -82,7 +82,8 @@ a:hover {
 }
 
 .site-nav a {
-  color: var(--ink);
+  color: var(--accent-strong);
+  font-weight: 620;
 }
 
 main {
@@ -409,7 +410,7 @@ h3 {
 .visitor-map-frame {
   position: relative;
   overflow: hidden;
-  min-height: 240px;
+  min-height: 170px;
   padding: 18px;
   border: 0;
   border-radius: 0;
@@ -424,7 +425,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 220px;
+  min-height: 150px;
   text-align: center;
 }
 
@@ -436,6 +437,18 @@ h3 {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
+}
+
+.clustrmaps-container #clstr_a,
+.clustrmaps-container .clstrm_outer {
+  display: block !important;
+  margin: 0 auto !important;
+  transform: scale(0.5);
+  transform-origin: center center;
+}
+
+.clustrmaps-container .clstrm_outer {
+  max-width: none;
 }
 
 .map-status {
