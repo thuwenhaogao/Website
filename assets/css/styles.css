@@ -409,10 +409,10 @@ h3 {
 .visitor-map-frame {
   position: relative;
   overflow: hidden;
-  min-height: 390px;
-  padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  min-height: 240px;
+  padding: 18px;
+  border: 0;
+  border-radius: 0;
   background: #fff;
 }
 
@@ -420,44 +420,27 @@ h3 {
   content: none;
 }
 
-.visitor-map {
-  position: relative;
-  z-index: 1;
-  min-height: 390px;
-  width: 100%;
-}
-
-.visitor-map .leaflet-control-attribution {
-  color: #8a949e;
-  font-size: 0.62rem;
-}
-
-.visitor-map .leaflet-tile-pane {
-  filter: grayscale(1) saturate(0.18) contrast(0.93) brightness(1.03);
-}
-
-.visitor-map .leaflet-tooltip {
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  color: var(--ink);
-  font-size: 0.78rem;
-  box-shadow: 0 8px 24px rgba(34, 38, 42, 0.12);
-}
-
-.visitor-map-status {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  left: 14px;
-  z-index: 500;
+.clustrmaps-container {
   display: flex;
   justify-content: center;
-  pointer-events: none;
+  align-items: center;
+  min-height: 220px;
+  text-align: center;
+}
+
+.clustrmaps-container a,
+.clustrmaps-container img,
+.clustrmaps-container canvas,
+.clustrmaps-container iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 .map-status {
   margin: 0;
-  max-width: 540px;
+  max-width: 440px;
   padding: 10px 14px;
   border: 1px solid #e5e9ec;
   border-radius: 6px;
@@ -465,7 +448,6 @@ h3 {
   color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.5;
-  backdrop-filter: blur(8px);
 }
 
 .map-status code {

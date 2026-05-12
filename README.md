@@ -19,15 +19,15 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map uses Leaflet on the homepage and an optional Cloudflare Worker backend for approximate visitor locations.
+The visitor map follows the same ClustrMaps script approach used by the reference academic homepage:
+`//cdn.clustrmaps.com/map_v2.js?cl=dbdbdb&w=300&t=n&d=SITE_ID&co=ffffff&cmo=a7c1a9&cmn=ac9fad`.
 
-1. Deploy `worker/` to Cloudflare Workers.
-2. Create a KV namespace and bind it as `VISITS_KV`.
-3. Copy `worker/wrangler.toml.example` to `worker/wrangler.toml` and fill in the KV namespace id plus `IP_HASH_SALT`.
-4. Paste the Worker URL into `assets/js/config.js` as `VISITOR_API_BASE_URL`.
+1. Create a ClustrMaps widget for this website.
+2. Copy the widget's `d` value.
+3. Paste it into `assets/js/config.js` as `CLUSTRMAPS_ID`.
 
-The Worker aggregates city/region/country-level locations. Raw IP addresses are used only to compute a daily salted hash for deduplication and are not stored.
-If `VISITOR_API_BASE_URL` is empty, the page shows demo visitor locations around Beijing, Hong Kong, Guangzhou, and Shenzhen.
+Do not reuse another person's `d` value: that would display and record their website's visitor statistics.
+If `CLUSTRMAPS_ID` is empty, the page shows a setup note instead of a fake visitor map.
 
 ## Image Credit
 

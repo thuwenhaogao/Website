@@ -6,8 +6,7 @@
     <meta name="description" content="Wenhao Gao, Ph.D. student in Electrical Engineering at Tsinghua University. Research in power systems, optimization, offshore wind, and electric vehicles.">
     <title>Wenhao Gao | Academic Homepage</title>
     <link rel="preload" href="assets/img/wenhao-gao-portrait.webp" as="image" type="image/webp">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260512h">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260512i">
   </head>
   <body>
     <header class="site-header">
@@ -181,18 +180,17 @@
           <p class="section-kicker">Visitors</p>
           <h2>Global Map</h2>
           <p class="muted">
-            Approximate visitor locations, aggregated by city and region.
+            A live visitor world map powered by ClustrMaps.
           </p>
         </div>
         <div class="visitor-card">
           <div class="visitor-map-frame">
-            <div id="visitor-map" class="visitor-map" aria-label="Global visitor map"></div>
-            <div class="visitor-map-status" aria-live="polite">
+            <div id="clustrmaps-container" class="clustrmaps-container" aria-live="polite">
               <noscript>Enable JavaScript to view the visitor map.</noscript>
               <p id="map-status" class="map-status" hidden></p>
             </div>
           </div>
-          <p class="visitor-note">Approximate IP-derived locations are aggregated for display; raw IP addresses are not shown on this site.</p>
+          <p class="visitor-note">Visitor statistics are handled by ClustrMaps using the same map script style as the reference homepage.</p>
         </div>
       </section>
 
@@ -226,9 +224,8 @@
       </p>
     </footer>
 
-    <script src="assets/js/config.js?v=20260512h"></script>
+    <script src="assets/js/config.js?v=20260512i"></script>
     <script src="assets/js/publications.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="assets/js/site.js?v=20260512h"></script>
+    <script src="assets/js/site.js?v=20260512i"></script>
   </body>
 </html>
