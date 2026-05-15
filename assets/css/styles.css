@@ -445,7 +445,7 @@ h3 {
   align-items: center;
   justify-content: center;
   width: min(100%, 760px);
-  height: clamp(270px, 32vw, 560px);
+  height: clamp(290px, 34vw, 600px);
   min-height: 0;
   margin: 0 auto;
   padding: 0;
@@ -482,7 +482,7 @@ h3 {
 .clustrmaps-container .clstrm_outer {
   display: block !important;
   margin: 0 auto !important;
-  transform: scale(0.78);
+  transform: scale(0.74);
   transform-origin: center center;
 }
 
@@ -638,12 +638,12 @@ address {
 
   .visitor-map-frame,
   .clustrmaps-container {
-    height: 270px;
+    height: 290px;
     min-height: 0;
   }
 
   .clustrmaps-container #clstr_a,
   .clustrmaps-container .clstrm_outer {
-    transform: scale(0.72);
+    transform: scale(0.69);
   }
 }
