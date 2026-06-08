@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
-const mapId = "1780901141";
+const mapId = "d2fevBEtCWSp9hCUCxU_Fh9ujHfTnZOcJezj8WSyun8";
 const projectRoot = new URL("../", import.meta.url);
 
 function runHomepageScripts({ loadPublications = false } = {}) {
@@ -76,21 +76,24 @@ function runHomepageScripts({ loadPublications = false } = {}) {
   return { appended, status, publicationsHtml: elements.get("publication-list").innerHTML };
 }
 
-test("injects the SmallCounter visitor map image widget", () => {
+test("injects the MapMyVisitors globe widget script", () => {
   const { appended, status } = runHomepageScripts();
 
   assert.equal(appended.length, 1);
-  assert.equal(appended[0].tagName, "A");
-  assert.equal(appended[0].href, `https://smallcounter.com/vmap/${mapId}/`);
-  assert.equal(appended[0].target, "_blank");
-  assert.equal(appended[0].rel, "noreferrer");
-
-  assert.equal(appended[0].children.length, 1);
-  const image = appended[0].children[0];
-  assert.equal(image.tagName, "IMG");
-  assert.equal(image.alt, "World map visitor counter");
-  assert.equal(image.src, `https://smallcounter.com/map/view.php?type=1200&id=${mapId}`);
+  assert.equal(appended[0].tagName, "SCRIPT");
+  assert.equal(appended[0].type, "text/javascript");
+  assert.equal(appended[0].id, "mmvst_globe");
+  assert.equal(appended[0].async, true);
+  assert.equal(appended[0].src, `https://mapmyvisitors.com/globe.js?d=${mapId}`);
   assert.equal(status.textContent, "Loading visitor map...");
+});
+
+test("keeps the MapMyVisitors globe visible with a muted blue-purple treatment", () => {
+  const css = readFileSync(new URL("assets/css/styles.css", projectRoot), "utf8");
+
+  assert.match(css, /\.visitor-map-container \.mmvst_outer #mmvst_a \.mmvst_inner/);
+  assert.match(css, /display: block !important;/);
+  assert.match(css, /filter: saturate\(0\.54\) hue-rotate\(28deg\) brightness\(1\.1\) contrast\(0\.88\);/);
 });
 
 test("renders the accepted IEEE TTE paper first with co-first author marking", () => {

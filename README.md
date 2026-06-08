@@ -19,15 +19,16 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map uses a SmallCounter world map widget generated for this site:
-`https://smallcounter.com/map/view.php?type=1200&id=1780901141`.
+The visitor map uses a MapMyVisitors globe widget generated for this site:
+`https://mapmyvisitors.com/globe.js?d=d2fevBEtCWSp9hCUCxU_Fh9ujHfTnZOcJezj8WSyun8`.
 
-1. Visit `https://smallcounter.com/map/`.
-2. Copy the generated world map counter ID.
-3. Paste it into `assets/js/config.js` as `SMALLCOUNTER_ID`.
+1. Register or sign in at `https://mapmyvisitors.com/`.
+2. Create a globe widget for `https://thuwenhaogao.github.io/Website/`.
+3. Copy the generated widget `d` value.
+4. Paste it into `assets/js/config.js` as `MAPMYVISITORS_ID`.
 
-Do not reuse another person's ID: that would display and record their website's visitor statistics.
-If `SMALLCOUNTER_ID` is empty, the page shows a setup note instead of a fake visitor map.
+Do not reuse another person's widget ID: that would display and record their website's visitor statistics.
+If `MAPMYVISITORS_ID` is empty, the page shows a setup note instead of a fake visitor map.
 
 ## Image Credit
 

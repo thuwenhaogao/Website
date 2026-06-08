@@ -33,17 +33,12 @@
     `).join("");
   }
 
-  function buildSmallCounterMapUrl(config) {
+  function buildMapMyVisitorsUrl(config) {
     const params = new URLSearchParams({
-      type: String(config.SMALLCOUNTER_MAP_TYPE || 180),
-      id: config.SMALLCOUNTER_ID
+      d: config.MAPMYVISITORS_ID
     });
 
-    return `https://smallcounter.com/map/view.php?${params.toString()}`;
-  }
-
-  function buildSmallCounterStatsUrl(config) {
-    return `https://smallcounter.com/vmap/${encodeURIComponent(config.SMALLCOUNTER_ID)}/`;
+    return `https://mapmyvisitors.com/globe.js?${params.toString()}`;
   }
 
   function initVisitorMap() {
@@ -52,34 +47,27 @@
     const config = window.SITE_CONFIG || {};
 
     if (!container || !status) return;
-    if (!config.SMALLCOUNTER_ID) {
+    if (!config.MAPMYVISITORS_ID) {
       status.hidden = false;
-      status.textContent = "Paste your SmallCounter map ID in assets/js/config.js to activate the live visitor map.";
+      status.textContent = "Paste your MapMyVisitors widget ID in assets/js/config.js to activate the live visitor map.";
       return;
     }
 
     status.hidden = false;
     status.textContent = "Loading visitor map...";
 
-    const link = document.createElement("a");
-    link.title = "Free world map tracker";
-    link.href = buildSmallCounterStatsUrl(config);
-    link.target = "_blank";
-    link.rel = "noreferrer";
-
-    const image = document.createElement("img");
-    image.title = "Free world map counter";
-    image.alt = "World map visitor counter";
-    image.border = "1";
-    image.src = buildSmallCounterMapUrl(config);
-    image.onload = () => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.id = "mmvst_globe";
+    script.async = true;
+    script.src = buildMapMyVisitorsUrl(config);
+    script.onload = () => {
       status.remove();
     };
-    image.onerror = () => {
+    script.onerror = () => {
       status.textContent = "Visitor map could not load right now.";
     };
-    link.append(image);
-    container.append(link);
+    container.append(script);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
