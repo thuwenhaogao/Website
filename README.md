@@ -12,10 +12,10 @@ Open `http://localhost:8000`.
 
 ## Deploy to GitHub Pages
 
-1. Create or use `thuwenhaogao/Website-V2`.
+1. Create or use `thuwenhaogao/Website`.
 2. Push this repository to GitHub.
 3. In GitHub repository settings, enable Pages from the `main` branch root.
-4. The site should be available at `https://thuwenhaogao.github.io/Website-V2/`.
+4. The site should be available at `https://thuwenhaogao.github.io/Website/`.
 
 ## Visitor Map
 
