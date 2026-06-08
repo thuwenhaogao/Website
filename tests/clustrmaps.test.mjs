@@ -69,7 +69,7 @@ function runHomepageScripts({ loadPublications = false } = {}) {
       appended.push(node);
     },
     querySelector(selector) {
-      if (selector === "#mapmyvisitors-widget") return findById(this, "mapmyvisitors-widget");
+      if (selector === "#mmvst_a") return findById(this, "mmvst_a");
       return null;
     }
   };
@@ -107,27 +107,27 @@ function runHomepageScripts({ loadPublications = false } = {}) {
   return { appended, container, mutationObservers, status, publicationsHtml: elements.get("publication-list").innerHTML };
 }
 
-test("injects the registered MapMyVisitors tracking script", () => {
+test("injects the registered MapMyVisitors globe script", () => {
   const { appended, status } = runHomepageScripts();
 
   assert.equal(appended.length, 1);
   assert.equal(appended[0].tagName, "SCRIPT");
   assert.equal(appended[0].type, "text/javascript");
-  assert.equal(appended[0].id, "mapmyvisitors");
+  assert.equal(appended[0].id, "mmvst_globe");
   assert.equal(appended[0].async, true);
-  assert.equal(appended[0].src, `https://mapmyvisitors.com/map.js?d=${mapId}`);
+  assert.equal(appended[0].src, `https://mapmyvisitors.com/globe.js?d=${mapId}`);
   assert.equal(status.textContent, "Loading visitor map...");
 });
 
-test("keeps the MapMyVisitors map visible with a muted treatment", () => {
+test("keeps the MapMyVisitors globe visible with a muted blue-purple treatment", () => {
   const css = readFileSync(new URL("assets/css/styles.css", projectRoot), "utf8");
 
-  assert.match(css, /\.visitor-map-container #mapmyvisitors-widget/);
-  assert.match(css, /\.visitor-map-container #mapmyvisitors-widget \.mapmyvisitors-map-container/);
-  assert.match(css, /filter: saturate\(0\.62\) hue-rotate\(24deg\) brightness\(1\.08\) contrast\(0\.9\);/);
+  assert.match(css, /\.visitor-map-container \.mmvst_outer #mmvst_a \.mmvst_inner/);
+  assert.match(css, /display: block !important;/);
+  assert.match(css, /filter: saturate\(0\.54\) hue-rotate\(28deg\) brightness\(1\.1\) contrast\(0\.88\);/);
 });
 
-test("redirects the generated MapMyVisitors map link to the public visitor statistics", () => {
+test("redirects the generated MapMyVisitors globe link to the public visitor statistics", () => {
   const { appended, container } = runHomepageScripts();
   const generatedLink = createGeneratedMapLink();
 
@@ -140,7 +140,7 @@ test("redirects the generated MapMyVisitors map link to the public visitor stati
   assert.equal(generatedLink.title, "View visitor statistics");
 });
 
-test("redirects the MapMyVisitors map link when the widget renders after script load", () => {
+test("redirects the MapMyVisitors globe link when the widget renders after script load", () => {
   const { appended, container, mutationObservers } = runHomepageScripts();
   const generatedLink = createGeneratedMapLink();
 
@@ -155,7 +155,7 @@ test("redirects the MapMyVisitors map link when the widget renders after script 
   assert.equal(mutationObservers[0].disconnected, false);
 });
 
-test("keeps the generated MapMyVisitors map link on the public statistics page after widget updates", () => {
+test("keeps the generated MapMyVisitors globe link on the public statistics page after widget updates", () => {
   const { appended, container, mutationObservers } = runHomepageScripts();
   const generatedLink = createGeneratedMapLink();
 
@@ -171,7 +171,7 @@ test("keeps the generated MapMyVisitors map link on the public statistics page a
   assert.equal(generatedLink.title, "View visitor statistics");
 });
 
-test("does not rewrite the generated MapMyVisitors map link when it is already correct", () => {
+test("does not rewrite the generated MapMyVisitors globe link when it is already correct", () => {
   const { appended, container, mutationObservers } = runHomepageScripts();
   const generatedLink = createGeneratedMapLink();
 
@@ -205,7 +205,7 @@ function createGeneratedMapLink() {
     _href: "//mapmyvisitors.com",
     children: [],
     hrefWrites: 0,
-    id: "mapmyvisitors-widget",
+    id: "mmvst_a",
     rel: "",
     target: "",
     title: "",

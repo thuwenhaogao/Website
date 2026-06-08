@@ -38,13 +38,13 @@
       d: config.MAPMYVISITORS_ID
     });
 
-    return `https://mapmyvisitors.com/map.js?${params.toString()}`;
+    return `https://mapmyvisitors.com/globe.js?${params.toString()}`;
   }
 
   function updateMapMyVisitorsLink(container, statsUrl) {
     if (!statsUrl) return;
 
-    const link = container.querySelector("#mapmyvisitors-widget");
+    const link = container.querySelector("#mmvst_a");
     if (!link) return false;
 
     if (link.href !== statsUrl) {
@@ -90,7 +90,7 @@
 
     const script = document.createElement("script");
     script.type = "text/javascript";
-    script.id = "mapmyvisitors";
+    script.id = "mmvst_globe";
     script.async = true;
     script.src = buildMapMyVisitorsUrl(config);
     script.onload = () => {

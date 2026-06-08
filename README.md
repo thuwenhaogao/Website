@@ -19,8 +19,8 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map uses the MapMyVisitors tracking widget generated for this site:
-`https://mapmyvisitors.com/map.js?d=NoozqEUH0WQO37gu4Z85KCgYh632LI_BMV5mNT4Bw8w`.
+The visitor map uses the MapMyVisitors globe widget generated for this site:
+`https://mapmyvisitors.com/globe.js?d=NoozqEUH0WQO37gu4Z85KCgYh632LI_BMV5mNT4Bw8w`.
 The public visitor statistics page is:
 `https://mapmyvisitors.com/web/1c58n`.
 

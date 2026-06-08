@@ -501,21 +501,27 @@ h3 {
   margin: 0 auto;
 }
 
-.visitor-map-container #mapmyvisitors,
-.visitor-map-container #mapmyvisitors-widget {
+.visitor-map-container #mmvst_globe,
+.visitor-map-container .mmvst_outer {
   flex: 0 0 auto;
   display: block !important;
   margin: 0 auto !important;
   max-width: 100% !important;
 }
 
-.visitor-map-container #mapmyvisitors-widget .mapmyvisitors-map-container {
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_inner {
   display: block !important;
-  filter: saturate(0.62) hue-rotate(24deg) brightness(1.08) contrast(0.9);
+  filter: saturate(0.54) hue-rotate(28deg) brightness(1.1) contrast(0.88);
 }
 
-.visitor-map-container #mapmyvisitors-widget .mapmyvisitors-map {
-  min-height: 180px;
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_globe,
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_map,
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_map_b,
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_map_f,
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_ref_top,
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_inner_shadow,
+.visitor-map-container .mmvst_outer #mmvst_a .mmvst_bottom_shadow {
+  display: block !important;
 }
 
 .map-status {
