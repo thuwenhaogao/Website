@@ -41,6 +41,31 @@
     return `https://mapmyvisitors.com/globe.js?${params.toString()}`;
   }
 
+  function updateMapMyVisitorsLink(container, statsUrl) {
+    if (!statsUrl) return;
+
+    const link = container.querySelector("#mmvst_a");
+    if (!link) return false;
+
+    link.href = statsUrl;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.title = "View visitor statistics";
+    return true;
+  }
+
+  function watchMapMyVisitorsLink(container, statsUrl) {
+    if (!statsUrl || typeof MutationObserver === "undefined") return null;
+
+    const observer = new MutationObserver(() => {
+      if (updateMapMyVisitorsLink(container, statsUrl)) {
+        observer.disconnect();
+      }
+    });
+    observer.observe(container, { childList: true, subtree: true });
+    return observer;
+  }
+
   function initVisitorMap() {
     const container = document.getElementById("visitor-map-container");
     const status = document.getElementById("map-status");
@@ -55,6 +80,7 @@
 
     status.hidden = false;
     status.textContent = "Loading visitor map...";
+    watchMapMyVisitorsLink(container, config.MAPMYVISITORS_STATS_URL);
 
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -63,6 +89,7 @@
     script.src = buildMapMyVisitorsUrl(config);
     script.onload = () => {
       status.remove();
+      updateMapMyVisitorsLink(container, config.MAPMYVISITORS_STATS_URL);
     };
     script.onerror = () => {
       status.textContent = "Visitor map could not load right now.";

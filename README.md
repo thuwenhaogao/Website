@@ -21,11 +21,14 @@ Open `http://localhost:8000`.
 
 The visitor map uses a MapMyVisitors globe widget generated for this site:
 `https://mapmyvisitors.com/globe.js?d=d2fevBEtCWSp9hCUCxU_Fh9ujHfTnZOcJezj8WSyun8`.
+The public visitor statistics page is:
+`https://mapmyvisitors.com/web/1c58n`.
 
 1. Register or sign in at `https://mapmyvisitors.com/`.
 2. Create a globe widget for `https://thuwenhaogao.github.io/Website/`.
 3. Copy the generated widget `d` value.
 4. Paste it into `assets/js/config.js` as `MAPMYVISITORS_ID`.
+5. Paste the public statistics page into `assets/js/config.js` as `MAPMYVISITORS_STATS_URL`.
 
 Do not reuse another person's widget ID: that would display and record their website's visitor statistics.
 If `MAPMYVISITORS_ID` is empty, the page shows a setup note instead of a fake visitor map.

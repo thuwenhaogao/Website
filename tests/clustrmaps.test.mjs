@@ -8,6 +8,32 @@ const projectRoot = new URL("../", import.meta.url);
 
 function runHomepageScripts({ loadPublications = false } = {}) {
   const appended = [];
+  const mutationObservers = [];
+  class MutationObserver {
+    constructor(callback) {
+      this.callback = callback;
+      this.disconnected = false;
+      this.observed = null;
+      mutationObservers.push(this);
+    }
+
+    disconnect() {
+      this.disconnected = true;
+    }
+
+    observe(target, options) {
+      this.observed = { target, options };
+    }
+  }
+  function findById(node, id) {
+    if (!node) return null;
+    if (node.id === id) return node;
+    for (const child of node.children || []) {
+      const found = findById(child, id);
+      if (found) return found;
+    }
+    return null;
+  }
   function createElement(tagName) {
     return {
       alt: "",
@@ -41,6 +67,10 @@ function runHomepageScripts({ loadPublications = false } = {}) {
     append(node) {
       this.children.push(node);
       appended.push(node);
+    },
+    querySelector(selector) {
+      if (selector === "#mmvst_a") return findById(this, "mmvst_a");
+      return null;
     }
   };
   const elements = new Map([
@@ -60,6 +90,7 @@ function runHomepageScripts({ loadPublications = false } = {}) {
   };
   const context = {
     document,
+    MutationObserver,
     URLSearchParams,
     window: {
       PUBLICATIONS: []
@@ -73,7 +104,7 @@ function runHomepageScripts({ loadPublications = false } = {}) {
   }
   vm.runInContext(readFileSync(new URL("assets/js/site.js", projectRoot), "utf8"), context);
 
-  return { appended, status, publicationsHtml: elements.get("publication-list").innerHTML };
+  return { appended, container, mutationObservers, status, publicationsHtml: elements.get("publication-list").innerHTML };
 }
 
 test("injects the MapMyVisitors globe widget script", () => {
@@ -96,6 +127,34 @@ test("keeps the MapMyVisitors globe visible with a muted blue-purple treatment",
   assert.match(css, /filter: saturate\(0\.54\) hue-rotate\(28deg\) brightness\(1\.1\) contrast\(0\.88\);/);
 });
 
+test("redirects the generated MapMyVisitors globe link to the public visitor statistics", () => {
+  const { appended, container } = runHomepageScripts();
+  const generatedLink = createGeneratedMapLink();
+
+  container.append(generatedLink);
+  appended[0].onload();
+
+  assert.equal(generatedLink.href, "https://mapmyvisitors.com/web/1c58n");
+  assert.equal(generatedLink.target, "_blank");
+  assert.equal(generatedLink.rel, "noreferrer");
+  assert.equal(generatedLink.title, "View visitor statistics");
+});
+
+test("redirects the MapMyVisitors globe link when the widget renders after script load", () => {
+  const { appended, container, mutationObservers } = runHomepageScripts();
+  const generatedLink = createGeneratedMapLink();
+
+  appended[0].onload();
+  container.append(generatedLink);
+  mutationObservers[0].callback();
+
+  assert.equal(generatedLink.href, "https://mapmyvisitors.com/web/1c58n");
+  assert.equal(generatedLink.target, "_blank");
+  assert.equal(generatedLink.rel, "noreferrer");
+  assert.equal(generatedLink.title, "View visitor statistics");
+  assert.equal(mutationObservers[0].disconnected, true);
+});
+
 test("renders the accepted IEEE TTE paper first with co-first author marking", () => {
   const { publicationsHtml } = runHomepageScripts({ loadPublications: true });
 
@@ -111,3 +170,17 @@ test("renders the accepted IEEE TTE paper first with co-first author marking", (
   assert.match(publicationsHtml, /<span class="publication-note">co-first author<\/span>/);
   assert.doesNotMatch(publicationsHtml, /SSRN 6017254/);
 });
+
+function createGeneratedMapLink() {
+  return {
+    children: [],
+    href: "//mapmyvisitors.com",
+    id: "mmvst_a",
+    rel: "",
+    target: "",
+    title: "",
+    append(node) {
+      this.children.push(node);
+    }
+  };
+}
