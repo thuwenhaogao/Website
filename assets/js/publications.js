@@ -1,6 +1,14 @@
 window.PUBLICATIONS = [
   {
     year: 2026,
+    title: "Integrated Planning of Urban Distribution Network and Multi-Charging Infrastructures with Smart Transportation System",
+    authors: "Y. Wang, W. Gao, X. Shen",
+    venue: "IEEE Transactions on Transportation Electrification",
+    note: "co-first author",
+    featured: true
+  },
+  {
+    year: 2026,
     title: "Optimal Sizing of Isolated Electricity-Hydrogen Offshore Oilfield Integrated Energy System",
     authors: "Y. Du, X. Shen, Y. Wang, B. Zhao, Y. Luo, W. Gao",
     venue: "CSEE Journal of Power and Energy Systems"
@@ -10,12 +18,6 @@ window.PUBLICATIONS = [
     title: "Optimal Planning of Offshore Wind Farm Collector System Considering Intensive Sea Use",
     authors: "H. Yang, X. Shen, W. Gao, Y. Du, M. Shi, Q. Li, W. Wei, Y. Chen",
     venue: "IEEE Transactions on Sustainable Energy"
-  },
-  {
-    year: 2025,
-    title: "Integrated Planning of Urban Distribution Network and Multi-Charging Infrastructures with Smart Transportation System",
-    authors: "Y. Wang, W. Gao, X. Shen",
-    venue: "Available at SSRN 6017254"
   },
   {
     year: 2025,
@@ -60,4 +62,3 @@ window.PUBLICATIONS = [
     venue: "Microelectronics, 51(1), 116-120"
   }
 ];
-

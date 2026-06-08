@@ -19,15 +19,15 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map uses the ClustrMaps widget generated for this site:
-`//clustrmaps.com/globe.js?d=3sRWfULsHC2PGDTchLeuZ4J8Ljs5NZBTJ_k2mXU0Tpo`.
+The visitor map uses a SmallCounter world map widget generated for this site:
+`https://smallcounter.com/map/view.php?type=1200&id=1780901141`.
 
-1. Create a ClustrMaps widget for this website.
-2. Copy the widget's `d` value.
-3. Paste it into `assets/js/config.js` as `CLUSTRMAPS_ID`.
+1. Visit `https://smallcounter.com/map/`.
+2. Copy the generated world map counter ID.
+3. Paste it into `assets/js/config.js` as `SMALLCOUNTER_ID`.
 
-Do not reuse another person's `d` value: that would display and record their website's visitor statistics.
-If `CLUSTRMAPS_ID` is empty, the page shows a setup note instead of a fake visitor map.
+Do not reuse another person's ID: that would display and record their website's visitor statistics.
+If `SMALLCOUNTER_ID` is empty, the page shows a setup note instead of a fake visitor map.
 
 ## Image Credit
 

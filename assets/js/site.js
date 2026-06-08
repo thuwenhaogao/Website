@@ -12,73 +12,79 @@
     return escapeHtml(authors).replace(/\bW\. Gao\b/g, "<strong>W. Gao</strong>");
   }
 
+  function renderPublicationNote(note) {
+    if (!note) return "";
+    return `<span class="publication-note">${escapeHtml(note)}</span>`;
+  }
+
   function renderPublications() {
     const list = document.getElementById("publication-list");
     if (!list || !Array.isArray(window.PUBLICATIONS)) return;
 
     list.innerHTML = window.PUBLICATIONS.map((pub) => `
-      <li>
+      <li${pub.featured ? ' class="publication-featured"' : ""}>
         <span class="publication-title">${escapeHtml(pub.title)}</span>
-        <span class="publication-meta">${highlightAuthor(pub.authors)}</span>
+        <span class="publication-meta">
+          <span class="publication-authors">${highlightAuthor(pub.authors)}</span>
+          ${renderPublicationNote(pub.note)}
+        </span>
         <span class="publication-venue">${escapeHtml(pub.venue)}, ${escapeHtml(pub.year)}</span>
       </li>
     `).join("");
   }
 
-  function buildClustrMapsUrl(config) {
-    if (config.CLUSTRMAPS_SCRIPT) {
-      const params = new URLSearchParams({ d: config.CLUSTRMAPS_ID });
-      return `${config.CLUSTRMAPS_SCRIPT}?${params.toString()}`;
-    }
-
-    const options = config.CLUSTRMAPS_OPTIONS || {};
+  function buildSmallCounterMapUrl(config) {
     const params = new URLSearchParams({
-      cl: options.color || "dbdbdb",
-      w: String(options.width || 300),
-      t: options.text || "n",
-      d: config.CLUSTRMAPS_ID,
-      co: options.background || "ffffff",
-      cmo: options.markerOld || "a7c1a9",
-      cmn: options.markerNew || "ac9fad"
+      type: String(config.SMALLCOUNTER_MAP_TYPE || 180),
+      id: config.SMALLCOUNTER_ID
     });
 
-    return `https://cdn.clustrmaps.com/map_v2.js?${params.toString()}`;
+    return `https://smallcounter.com/map/view.php?${params.toString()}`;
   }
 
-  function initClustrMaps() {
-    const container = document.getElementById("clustrmaps-container");
+  function buildSmallCounterStatsUrl(config) {
+    return `https://smallcounter.com/vmap/${encodeURIComponent(config.SMALLCOUNTER_ID)}/`;
+  }
+
+  function initVisitorMap() {
+    const container = document.getElementById("visitor-map-container");
     const status = document.getElementById("map-status");
     const config = window.SITE_CONFIG || {};
 
     if (!container || !status) return;
-    if (!config.CLUSTRMAPS_ID) {
+    if (!config.SMALLCOUNTER_ID) {
       status.hidden = false;
-      status.textContent = "Paste your ClustrMaps site ID in assets/js/config.js to activate the live visitor map.";
+      status.textContent = "Paste your SmallCounter map ID in assets/js/config.js to activate the live visitor map.";
       return;
     }
 
     status.hidden = false;
     status.textContent = "Loading visitor map...";
 
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.id = config.CLUSTRMAPS_SCRIPT && config.CLUSTRMAPS_SCRIPT.includes("globe.js")
-      ? "clstr_globe"
-      : "clustrmaps";
-    script.async = true;
-    script.src = buildClustrMapsUrl(config);
-    script.onload = () => {
+    const link = document.createElement("a");
+    link.title = "Free world map tracker";
+    link.href = buildSmallCounterStatsUrl(config);
+    link.target = "_blank";
+    link.rel = "noreferrer";
+
+    const image = document.createElement("img");
+    image.title = "Free world map counter";
+    image.alt = "World map visitor counter";
+    image.border = "1";
+    image.src = buildSmallCounterMapUrl(config);
+    image.onload = () => {
       status.remove();
     };
-    script.onerror = () => {
+    image.onerror = () => {
       status.textContent = "Visitor map could not load right now.";
     };
-    container.append(script);
+    link.append(image);
+    container.append(link);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("year").textContent = new Date().getFullYear();
     renderPublications();
-    initClustrMaps();
+    initVisitorMap();
   });
 }());
