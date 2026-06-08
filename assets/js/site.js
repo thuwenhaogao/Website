@@ -38,19 +38,27 @@
       d: config.MAPMYVISITORS_ID
     });
 
-    return `https://mapmyvisitors.com/globe.js?${params.toString()}`;
+    return `https://mapmyvisitors.com/map.js?${params.toString()}`;
   }
 
   function updateMapMyVisitorsLink(container, statsUrl) {
     if (!statsUrl) return;
 
-    const link = container.querySelector("#mmvst_a");
+    const link = container.querySelector("#mapmyvisitors-widget");
     if (!link) return false;
 
-    link.href = statsUrl;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.title = "View visitor statistics";
+    if (link.href !== statsUrl) {
+      link.href = statsUrl;
+    }
+    if (link.target !== "_blank") {
+      link.target = "_blank";
+    }
+    if (link.rel !== "noreferrer") {
+      link.rel = "noreferrer";
+    }
+    if (link.title !== "View visitor statistics") {
+      link.title = "View visitor statistics";
+    }
     return true;
   }
 
@@ -58,11 +66,9 @@
     if (!statsUrl || typeof MutationObserver === "undefined") return null;
 
     const observer = new MutationObserver(() => {
-      if (updateMapMyVisitorsLink(container, statsUrl)) {
-        observer.disconnect();
-      }
+      updateMapMyVisitorsLink(container, statsUrl);
     });
-    observer.observe(container, { childList: true, subtree: true });
+    observer.observe(container, { attributes: true, attributeFilter: ["href"], childList: true, subtree: true });
     return observer;
   }
 
@@ -74,7 +80,7 @@
     if (!container || !status) return;
     if (!config.MAPMYVISITORS_ID) {
       status.hidden = false;
-      status.textContent = "Paste your MapMyVisitors widget ID in assets/js/config.js to activate the live visitor map.";
+      status.textContent = "Paste your MapMyVisitors tracking ID in assets/js/config.js to activate the live visitor map.";
       return;
     }
 
@@ -84,7 +90,7 @@
 
     const script = document.createElement("script");
     script.type = "text/javascript";
-    script.id = "mmvst_globe";
+    script.id = "mapmyvisitors";
     script.async = true;
     script.src = buildMapMyVisitorsUrl(config);
     script.onload = () => {

@@ -19,14 +19,14 @@ Open `http://localhost:8000`.
 
 ## Visitor Map
 
-The visitor map uses a MapMyVisitors globe widget generated for this site:
-`https://mapmyvisitors.com/globe.js?d=d2fevBEtCWSp9hCUCxU_Fh9ujHfTnZOcJezj8WSyun8`.
+The visitor map uses the MapMyVisitors tracking widget generated for this site:
+`https://mapmyvisitors.com/map.js?d=NoozqEUH0WQO37gu4Z85KCgYh632LI_BMV5mNT4Bw8w`.
 The public visitor statistics page is:
 `https://mapmyvisitors.com/web/1c58n`.
 
 1. Register or sign in at `https://mapmyvisitors.com/`.
-2. Create a globe widget for `https://thuwenhaogao.github.io/Website/`.
-3. Copy the generated widget `d` value.
+2. Open the tracking code for `https://thuwenhaogao.github.io/Website/`.
+3. Copy the generated tracking `d` value.
 4. Paste it into `assets/js/config.js` as `MAPMYVISITORS_ID`.
 5. Paste the public statistics page into `assets/js/config.js` as `MAPMYVISITORS_STATS_URL`.
 

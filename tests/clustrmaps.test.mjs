@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
-const mapId = "d2fevBEtCWSp9hCUCxU_Fh9ujHfTnZOcJezj8WSyun8";
+const mapId = "NoozqEUH0WQO37gu4Z85KCgYh632LI_BMV5mNT4Bw8w";
 const projectRoot = new URL("../", import.meta.url);
 
 function runHomepageScripts({ loadPublications = false } = {}) {
@@ -69,7 +69,7 @@ function runHomepageScripts({ loadPublications = false } = {}) {
       appended.push(node);
     },
     querySelector(selector) {
-      if (selector === "#mmvst_a") return findById(this, "mmvst_a");
+      if (selector === "#mapmyvisitors-widget") return findById(this, "mapmyvisitors-widget");
       return null;
     }
   };
@@ -107,27 +107,27 @@ function runHomepageScripts({ loadPublications = false } = {}) {
   return { appended, container, mutationObservers, status, publicationsHtml: elements.get("publication-list").innerHTML };
 }
 
-test("injects the MapMyVisitors globe widget script", () => {
+test("injects the registered MapMyVisitors tracking script", () => {
   const { appended, status } = runHomepageScripts();
 
   assert.equal(appended.length, 1);
   assert.equal(appended[0].tagName, "SCRIPT");
   assert.equal(appended[0].type, "text/javascript");
-  assert.equal(appended[0].id, "mmvst_globe");
+  assert.equal(appended[0].id, "mapmyvisitors");
   assert.equal(appended[0].async, true);
-  assert.equal(appended[0].src, `https://mapmyvisitors.com/globe.js?d=${mapId}`);
+  assert.equal(appended[0].src, `https://mapmyvisitors.com/map.js?d=${mapId}`);
   assert.equal(status.textContent, "Loading visitor map...");
 });
 
-test("keeps the MapMyVisitors globe visible with a muted blue-purple treatment", () => {
+test("keeps the MapMyVisitors map visible with a muted treatment", () => {
   const css = readFileSync(new URL("assets/css/styles.css", projectRoot), "utf8");
 
-  assert.match(css, /\.visitor-map-container \.mmvst_outer #mmvst_a \.mmvst_inner/);
-  assert.match(css, /display: block !important;/);
-  assert.match(css, /filter: saturate\(0\.54\) hue-rotate\(28deg\) brightness\(1\.1\) contrast\(0\.88\);/);
+  assert.match(css, /\.visitor-map-container #mapmyvisitors-widget/);
+  assert.match(css, /\.visitor-map-container #mapmyvisitors-widget \.mapmyvisitors-map-container/);
+  assert.match(css, /filter: saturate\(0\.62\) hue-rotate\(24deg\) brightness\(1\.08\) contrast\(0\.9\);/);
 });
 
-test("redirects the generated MapMyVisitors globe link to the public visitor statistics", () => {
+test("redirects the generated MapMyVisitors map link to the public visitor statistics", () => {
   const { appended, container } = runHomepageScripts();
   const generatedLink = createGeneratedMapLink();
 
@@ -140,7 +140,7 @@ test("redirects the generated MapMyVisitors globe link to the public visitor sta
   assert.equal(generatedLink.title, "View visitor statistics");
 });
 
-test("redirects the MapMyVisitors globe link when the widget renders after script load", () => {
+test("redirects the MapMyVisitors map link when the widget renders after script load", () => {
   const { appended, container, mutationObservers } = runHomepageScripts();
   const generatedLink = createGeneratedMapLink();
 
@@ -152,7 +152,36 @@ test("redirects the MapMyVisitors globe link when the widget renders after scrip
   assert.equal(generatedLink.target, "_blank");
   assert.equal(generatedLink.rel, "noreferrer");
   assert.equal(generatedLink.title, "View visitor statistics");
-  assert.equal(mutationObservers[0].disconnected, true);
+  assert.equal(mutationObservers[0].disconnected, false);
+});
+
+test("keeps the generated MapMyVisitors map link on the public statistics page after widget updates", () => {
+  const { appended, container, mutationObservers } = runHomepageScripts();
+  const generatedLink = createGeneratedMapLink();
+
+  appended[0].onload();
+  container.append(generatedLink);
+  mutationObservers[0].callback();
+  generatedLink.href = "http://mapmyvisitors.com/web/1c58n";
+  mutationObservers[0].callback();
+
+  assert.equal(generatedLink.href, "https://mapmyvisitors.com/web/1c58n");
+  assert.equal(generatedLink.target, "_blank");
+  assert.equal(generatedLink.rel, "noreferrer");
+  assert.equal(generatedLink.title, "View visitor statistics");
+});
+
+test("does not rewrite the generated MapMyVisitors map link when it is already correct", () => {
+  const { appended, container, mutationObservers } = runHomepageScripts();
+  const generatedLink = createGeneratedMapLink();
+
+  container.append(generatedLink);
+  appended[0].onload();
+  const hrefWrites = generatedLink.hrefWrites;
+  mutationObservers[0].callback();
+
+  assert.equal(generatedLink.href, "https://mapmyvisitors.com/web/1c58n");
+  assert.equal(generatedLink.hrefWrites, hrefWrites);
 });
 
 test("renders the accepted IEEE TTE paper first with co-first author marking", () => {
@@ -172,10 +201,11 @@ test("renders the accepted IEEE TTE paper first with co-first author marking", (
 });
 
 function createGeneratedMapLink() {
-  return {
+  const generatedLink = {
+    _href: "//mapmyvisitors.com",
     children: [],
-    href: "//mapmyvisitors.com",
-    id: "mmvst_a",
+    hrefWrites: 0,
+    id: "mapmyvisitors-widget",
     rel: "",
     target: "",
     title: "",
@@ -183,4 +213,14 @@ function createGeneratedMapLink() {
       this.children.push(node);
     }
   };
+  Object.defineProperty(generatedLink, "href", {
+    get() {
+      return this._href;
+    },
+    set(value) {
+      this.hrefWrites += 1;
+      this._href = value;
+    }
+  });
+  return generatedLink;
 }
