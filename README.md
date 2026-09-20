@@ -35,9 +35,17 @@ If `MAPMYVISITORS_ID` is empty, the page shows a setup note instead of a fake vi
 
 ## Visitor Flag Counter
 
-The sample counter has been disconnected because it belongs to another website.
-Only embed a new counter registered for this homepage; never reuse a reference counter's history.
-The centered layout styles remain in `assets/css/styles.css` for the replacement.
+A centered Flag Counter below the globe uses `ICvQ` on `s05.flagcounter.com`,
+newly registered on September 21, 2026 (Asia/Singapore) for Wenhao Gao's homepage:
+`https://thuwenhaogao.github.io/Website/`.
+The official statistics link is `https://info.flagcounter.com/ICvQ`.
+It starts a new visitor history and does not import another website's statistics.
+The registration preview itself can contribute the initial visit.
+
+The live image shows up to eight country flags, with eight columns on desktop and four on phones.
+Its image URLs and statistics link are in `index.html`; layout styles are in `assets/css/styles.css`.
+Keep this counter's code on this homepage only. Any other page embedding the same counter can
+also contribute visits; it is not locked to a single domain. Local preview and QA visits can count too.
 
 ## Image Credit
 
