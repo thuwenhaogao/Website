@@ -103,9 +103,40 @@
     container.append(script);
   }
 
+  function initFlagCounter() {
+    const image = document.getElementById("flag-counter-image");
+    const button = document.getElementById("flag-counter-refresh");
+    const status = document.getElementById("flag-counter-status");
+    if (!image || !button || !status) return;
+
+    const imageUrl = image.src;
+    button.hidden = false;
+
+    image.addEventListener("load", () => {
+      if (!button.disabled) return;
+      button.disabled = false;
+      status.textContent = "Image reloaded. Flag images can lag live statistics by about 5 minutes.";
+    });
+    image.addEventListener("error", () => {
+      button.disabled = false;
+      status.textContent = "The flag image could not load. Try again or open Live statistics.";
+    });
+    button.addEventListener("click", () => {
+      if (button.disabled) return;
+      button.disabled = true;
+      status.textContent = "Checking for updated flags...";
+      // Re-request only on user action. Polling would add artificial pageviews.
+      // This bypasses a reused browser image, not Flag Counter's server-side delay.
+      const url = new URL(imageUrl);
+      url.searchParams.set("refresh", String(Date.now()));
+      image.src = url.href;
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("year").textContent = new Date().getFullYear();
     renderPublications();
+    initFlagCounter();
     initVisitorMap();
   });
 }());

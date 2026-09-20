@@ -555,11 +555,43 @@ h3 {
   margin: 24px auto 0;
 }
 
-.visitor-flag-counter picture,
 .visitor-flag-counter img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.visitor-counter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 0.84rem;
+}
+
+.visitor-counter-refresh {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--accent-strong);
+  font: inherit;
+  cursor: pointer;
+}
+
+.visitor-counter-refresh:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.visitor-counter-note {
+  max-width: 560px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 address {

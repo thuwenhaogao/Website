@@ -42,7 +42,14 @@ The official statistics link is `https://info.flagcounter.com/ICvQ`.
 It starts a new visitor history and does not import another website's statistics.
 The registration preview itself can contribute the initial visit.
 
-The live image shows up to eight country flags, with eight columns on desktop and four on phones.
+The image shows up to eight countries or regions in a single row on all screen sizes.
+Only places with recorded visits appear; eight columns do not create eight flags.
+According to the [official FAQ](https://flagcounter.com/faq.html), statistics pages update in
+real time, while the free counter image is delayed by approximately five minutes.
+An already-open page does not replace its image automatically. The **Refresh flags** button
+requests the latest available image without reloading the page, and **Live statistics** opens
+the real-time details. Refreshing cannot bypass the provider's image-generation delay.
+There is no automatic polling: each image request adds a counter pageview.
 Its image URLs and statistics link are in `index.html`; layout styles are in `assets/css/styles.css`.
 Keep this counter's code on this homepage only. Any other page embedding the same counter can
 also contribute visits; it is not locked to a single domain. Local preview and QA visits can count too.
