@@ -35,11 +35,9 @@ If `MAPMYVISITORS_ID` is empty, the page shows a setup note instead of a fake vi
 
 ## Visitor Flag Counter
 
-A centered Flag Counter below the globe uses the existing `DvzN` counter:
-`https://s01.flagcounter.com/more/DvzN/`.
-The live image shows the top eight country flags in one row on desktop and two rows on phones.
-Its image URLs and statistics link are in `index.html`; layout styles are in `assets/css/styles.css`.
-This counter is independent of MapMyVisitors and retains its existing visitor history.
+The sample counter has been disconnected because it belongs to another website.
+Only embed a new counter registered for this homepage; never reuse a reference counter's history.
+The centered layout styles remain in `assets/css/styles.css` for the replacement.
 
 ## Image Credit
 
