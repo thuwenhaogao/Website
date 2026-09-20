@@ -1,6 +1,12 @@
 window.PUBLICATIONS = [
   {
     year: 2026,
+    title: "Life-Cycle Planning of Collector System for Deep-Sea Multi-Spatial Wind-PV-Tidal Farm",
+    authors: "W. Gao, W. Xu, Y. Du, Y. Wang, X. Shen",
+    venue: "CSEE Journal of Power and Energy Systems"
+  },
+  {
+    year: 2026,
     title: "Integrated Planning of Urban Distribution Network and Multi-Charging Infrastructures with Smart Transportation System",
     authors: "Y. Wang, W. Gao, X. Shen",
     venue: "IEEE Transactions on Transportation Electrification",

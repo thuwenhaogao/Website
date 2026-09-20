@@ -549,6 +549,19 @@ h3 {
   text-align: center;
 }
 
+.visitor-flag-counter {
+  display: block;
+  max-width: 100%;
+  margin: 24px auto 0;
+}
+
+.visitor-flag-counter picture,
+.visitor-flag-counter img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 address {
   font-style: normal;
 }

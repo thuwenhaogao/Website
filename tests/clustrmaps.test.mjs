@@ -184,7 +184,7 @@ test("does not rewrite the generated MapMyVisitors globe link when it is already
   assert.equal(generatedLink.hrefWrites, hrefWrites);
 });
 
-test("renders the accepted IEEE TTE paper first with co-first author marking", () => {
+test("renders the accepted IEEE TTE paper with co-first author marking", () => {
   const { publicationsHtml } = runHomepageScripts({ loadPublications: true });
 
   assert.match(

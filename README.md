@@ -33,6 +33,14 @@ The public visitor statistics page is:
 Do not reuse another person's widget ID: that would display and record their website's visitor statistics.
 If `MAPMYVISITORS_ID` is empty, the page shows a setup note instead of a fake visitor map.
 
+## Visitor Flag Counter
+
+A centered Flag Counter below the globe uses the existing `DvzN` counter:
+`https://s01.flagcounter.com/more/DvzN/`.
+The live image shows the top eight country flags in one row on desktop and two rows on phones.
+Its image URLs and statistics link are in `index.html`; layout styles are in `assets/css/styles.css`.
+This counter is independent of MapMyVisitors and retains its existing visitor history.
+
 ## Image Credit
 
 Tsinghua University Second Gate image: Wikimedia Commons, CC0.
